@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CordonV2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bdb863b855ad0763501c5f28839ed724b554fe1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+479de58e85978e6faef22017341070f5efa97d24")]
 [assembly: System.Reflection.AssemblyProductAttribute("CordonV2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CordonV2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,7 +8,7 @@
     <MudText Typo="Typo.h3" Style="text-align: center;" GutterBottom="true">FILE UPLOAD</MudText>
     <MudGrid Justify="Justify.Center">
         <MudItem>
-            <MudFileUpload T="IBrowserFile" Accept=".csv" OnFilesChanged="FileUploaded">
+            <MudFileUpload T="IBrowserFile" Accept=".csv" FilesChanged="FileUploaded">
                 <ActivatorContent>
                     <MudButton Variant="Variant.Filled"
                             Color="Color.Primary"
@@ -29,7 +29,7 @@
 } else if (!string.IsNullOrEmpty(ErrorMessage))
 {
     <MudGrid Justify="Justify.Center">
-        <MudFileUpload T="IBrowserFile" Accept=".csv" OnFilesChanged="FileUploaded">
+        <MudFileUpload T="IBrowserFile" Accept=".csv" FilesChanged="FileUploaded">
             <ActivatorContent>
                 <MudButton Variant="Variant.Filled"
                         Color="Color.Primary"
@@ -59,9 +59,9 @@
 
     const int MAX_FILESIZE = 5120000;
 
-    public async Task FileUploaded(InputFileChangeEventArgs e)
+    public async Task FileUploaded(IBrowserFile e)
     {
-        var browserFile = e.File;
+        var browserFile = e;
         dataUploading = true;
 
         if (browserFile != null)

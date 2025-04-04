@@ -1,6 +1,22 @@
 {
   "Files": [
     {
+      "Id": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Black.png",
+      "PackagePath": "staticwebassets\\OGE+Logo+Black.png"
+    },
+    {
+      "Id": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Color.png",
+      "PackagePath": "staticwebassets\\OGE+Logo+Color.png"
+    },
+    {
+      "Id": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+White.png",
+      "PackagePath": "staticwebassets\\OGE+Logo+White.png"
+    },
+    {
+      "Id": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CordonV2.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
@@ -15,22 +31,6 @@
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CordonV2.props",
       "PackagePath": "buildTransitive\\CordonV2.props"
-    },
-    {
-      "Id": "q:\\Capstone\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Black.png",
-      "PackagePath": "staticwebassets\\OGE+Logo+Black.png"
-    },
-    {
-      "Id": "q:\\Capstone\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Color.png",
-      "PackagePath": "staticwebassets\\OGE+Logo+Color.png"
-    },
-    {
-      "Id": "q:\\Capstone\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+White.png",
-      "PackagePath": "staticwebassets\\OGE+Logo+White.png"
-    },
-    {
-      "Id": "q:\\Capstone\\CordonV2\\CordonV2\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
     }
   ],
   "ElementsToRemove": []
