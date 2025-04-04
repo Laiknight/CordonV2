@@ -1,5 +1,4 @@
 ﻿@page "/"
-@rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
 
@@ -42,7 +41,73 @@
     </MudGrid>
 } else if (dataUploaded)
 {
-    <MudText>File Uploaded</MudText>
+    <MudGrid>
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAD" XAxisLabels="@MADX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Most Accessed Doors</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Most Active Users</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Daily Activity</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Unique Daily Entries</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Longest Inactivity Times</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+
+        <MudItem xs="4" >
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+                <CustomGraphics>
+                    <style>
+                        .heavy { font: bold 30px Helvetica; }
+                    </style>
+                    <text x="80" y="35" class="heavy">Abnormal Entries</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+    </MudGrid>
 }
 
 @code {
@@ -54,14 +119,43 @@
     public bool dataUploaded { get; set; } = false;
     public bool dataUploading { get; set; } = false;
 
+    ChartOptions chartOptions = new ChartOptions()
+    {
+        ShowLegend = false,
+    };
+
+    //Most Accessed Doors
+    public List<ChartSeries> MAD { get; set; } = new List<ChartSeries>();
+    public List<string> MADX { get; set; } = new List<string>();
+
+    //Most Active Users
+    public List<ChartSeries> MAU { get; set; } = new List<ChartSeries>();
+    public List<string> MAUX { get; set; } = new List<string>();
+
+    //Daily Activity
+    public List<ChartSeries> DA { get; set; } = new List<ChartSeries>();
+    public List<string> DAX { get; set; } = new List<string>();
+    
+    //Unique Daily Entries
+    public List<ChartSeries> UDE { get; set; } = new List<ChartSeries>();
+    public List<string> UDEX { get; set; } = new List<string>();
+
+    //Longest Inactivity Times
+    public List<ChartSeries> LIT { get; set; } = new List<ChartSeries>();
+    public List<string> LITX { get; set; } = new List<string>();
+        
+    //Abnormal Entries
+    public List<ChartSeries> AE { get; set; } = new List<ChartSeries>();
+    public List<string> AEX { get; set; } = new List<string>();
+
     StreamReader? reader;
     List<ReaderEvent> readerEvents = new List<ReaderEvent>();
 
     const int MAX_FILESIZE = 5120000;
 
-    public async Task FileUploaded(IBrowserFile e)
+    public async Task FileUploaded(IBrowserFile file)
     {
-        var browserFile = e;
+        var browserFile = file;
         dataUploading = true;
 
         if (browserFile != null)
@@ -80,9 +174,10 @@
                 var extension = Path.GetExtension(browserFile.Name);
                 var targetFilePath = Path.ChangeExtension(randomFile, extension);
 
-                var destinationStream = new FileStream(targetFilePath, FileMode.Create);
-                await fileStream.CopyToAsync(destinationStream);
-                destinationStream.Close();
+                using (var destinationStream = new FileStream(targetFilePath, FileMode.Create))
+                {
+                    await fileStream.CopyToAsync(destinationStream);
+                }
 
                 reader = new StreamReader(targetFilePath);
                 await ReadFile();
@@ -114,9 +209,124 @@
                     var readerEvent = new ReaderEvent(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
                     readerEvents.Add(readerEvent);
                 }
+                line = await reader.ReadLineAsync();
             }
-            line = await reader.ReadLineAsync();
         }
+        if (readerEvents.Count > 0)
+        {
+            SetUpData();
+        }
+        else
+        {
+            ErrorMessage = "No data found in the file.";
+        }
+    }
+
+    void SetUpData()
+    {
+        MostAccessedDoors();
+        MostActiveUsers();
+        DailyActivity();
+        UniqueDailyEntries();
+        LongestInactivityTimes();
+        AbnormalEntries();
+    }
+
+    void MostAccessedDoors()
+    {
+        Dictionary<string, int> numAccessed = new Dictionary<string, int>();
+
+        foreach (var readerEvent in readerEvents)
+        {
+            if (numAccessed.ContainsKey(readerEvent.readerDesc))
+            {
+                numAccessed[readerEvent.readerDesc]++;
+            }
+            else
+            {
+                numAccessed.Add(readerEvent.readerDesc, 1);
+            }
+        }
+
+        var sortedNumAccessed = numAccessed.OrderByDescending(x => x.Value).ToList();
+
+        for (int i = 0; i < sortedNumAccessed.Count; i++)
+        {
+            if (i < 10)
+            {
+                MAD.Add(new ChartSeries() { Name = sortedNumAccessed[i].Key, Data = new double[] { sortedNumAccessed[i].Value } });
+                MADX.Add(sortedNumAccessed[i].Key);
+            }
+        }
+    }
+
+    void MostActiveUsers()
+    {
+        Dictionary<string, int> numAccessed = new Dictionary<string, int>();
+
+        foreach (var readerEvent in readerEvents)
+        {
+            if (numAccessed.ContainsKey(readerEvent.idHash))
+            {
+                numAccessed[readerEvent.idHash]++;
+            }
+            else
+            {
+                numAccessed.Add(readerEvent.idHash, 1);
+            }
+        }
+
+        var sortedNumAccessed = numAccessed.OrderByDescending(x => x.Value).ToList();
+
+        for (int i = 0; i < sortedNumAccessed.Count; i++)
+        {
+            if (i < 10)
+            {
+                MAU.Add(new ChartSeries() { Name = sortedNumAccessed[i].Key, Data = new double[] { sortedNumAccessed[i].Value } });
+                MAUX.Add(sortedNumAccessed[i].Key);
+            }
+        }
+    }
+
+    void DailyActivity()
+    {
+        Dictionary<string, int> numAccessed = new Dictionary<string, int>();
+
+        foreach (var readerEvent in readerEvents)
+        {
+            var date = DateTime.Parse(readerEvent.eventTime.Substring(0,readerEvent.eventTime.IndexOf('T')));
+            if (numAccessed.ContainsKey(date.DayOfWeek.ToString()))
+            {
+                numAccessed[date.DayOfWeek.ToString()]++;
+            }
+            else
+            {
+                numAccessed.Add(date.DayOfWeek.ToString(), 1);
+            }
+        }
+
+        DAX = new List<string>{  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        for (int j = 0; j < DAX.Count; j++)
+        {
+            double[] data = new double[DAX.Count];
+            data[j] =  Convert.ToDouble(numAccessed[DAX[j]]);
+            DA.Add(new ChartSeries() { Name = DAX[j], Data = data } );
+        }
+    }
+
+    void UniqueDailyEntries()
+    {
+
+    }
+
+   void LongestInactivityTimes()
+    {
+
+    }
+
+    void AbnormalEntries()
+    {
+
     }
 
     public class ReaderEvent

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1OswFvah8kH0WJ7oPGcui7zNLH4waFmGGY/j0kjQjMg=",
+  "Hash": "Im43ymVBfRcIcXnyL58j/7+nSjFhXaXpai+i3BSFD7s=",
   "Source": "CordonV2",
   "BasePath": "_content/CordonV2",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CordonV2\\wwwroot",
       "Source": "CordonV2",
-      "ContentRoot": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\",
       "BasePath": "_content/CordonV2",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css",
+      "Identity": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css"
+      "OriginalItemSpec": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.css"
     },
     {
-      "Identity": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js",
+      "Identity": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js",
       "SourceId": "MudBlazor",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\",
       "BasePath": "_content/MudBlazor",
       "RelativePath": "MudBlazor.min.js",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\phonv\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js"
+      "OriginalItemSpec": "C:\\Users\\ls1036305\\.nuget\\packages\\mudblazor\\8.5.1\\staticwebassets\\MudBlazor.min.js"
     },
     {
-      "Identity": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\favicon.ico",
+      "Identity": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\favicon.ico",
       "SourceId": "CordonV2",
       "SourceType": "Discovered",
-      "ContentRoot": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\",
       "BasePath": "_content/CordonV2",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Black.png",
+      "Identity": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Black.png",
       "SourceId": "CordonV2",
       "SourceType": "Discovered",
-      "ContentRoot": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\",
       "BasePath": "_content/CordonV2",
       "RelativePath": "OGE+Logo+Black.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\OGE+Logo+Black.png"
     },
     {
-      "Identity": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Color.png",
+      "Identity": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+Color.png",
       "SourceId": "CordonV2",
       "SourceType": "Discovered",
-      "ContentRoot": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\",
       "BasePath": "_content/CordonV2",
       "RelativePath": "OGE+Logo+Color.png",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\OGE+Logo+Color.png"
     },
     {
-      "Identity": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+White.png",
+      "Identity": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\OGE+Logo+White.png",
       "SourceId": "CordonV2",
       "SourceType": "Discovered",
-      "ContentRoot": "d:\\Unity\\Catventure\\CordonV2\\CordonV2\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\wwwroot\\",
       "BasePath": "_content/CordonV2",
       "RelativePath": "OGE+Logo+White.png",
       "AssetKind": "All",
