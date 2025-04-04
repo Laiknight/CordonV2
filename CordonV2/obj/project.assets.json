@@ -228,7 +228,7 @@
           }
         }
       },
-      "MudBlazor/8.5.0": {
+      "MudBlazor/8.5.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.12",
@@ -638,10 +638,10 @@
         "microsoft.jsinterop.nuspec"
       ]
     },
-    "MudBlazor/8.5.0": {
-      "sha512": "PoXtdWHHnSonH1ake6CtoYwTM1l1o2rhQ4C47TRsOQZnnSeiWl7GAVmzpgbFsc0aSv+VZTFX7uXwkRUBR1DCgQ==",
+    "MudBlazor/8.5.1": {
+      "sha512": "xzGhtY60e1fvvyI7rJSYYV0UEkvY8niKuTaqby19cb8rELd29EpPU439RVL8KjVSMy473BEcpgYWBRAoDPGl8A==",
       "type": "package",
-      "path": "mudblazor/8.5.0",
+      "path": "mudblazor/8.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -659,7 +659,7 @@
         "lib/net8.0/MudBlazor.xml",
         "lib/net9.0/MudBlazor.dll",
         "lib/net9.0/MudBlazor.xml",
-        "mudblazor.8.5.0.nupkg.sha512",
+        "mudblazor.8.5.1.nupkg.sha512",
         "mudblazor.nuspec",
         "staticwebassets/MudBlazor.min.css",
         "staticwebassets/MudBlazor.min.js"
@@ -701,24 +701,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ls1036305\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Owner\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
+      "projectUniqueName": "Q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj",
       "projectName": "CordonV2",
-      "projectPath": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
-      "packagesPath": "C:\\Users\\ls1036305\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\obj\\",
+      "projectPath": "Q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "Q:\\Capstone\\CordonV2\\CordonV2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ls1036305\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -773,7 +772,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

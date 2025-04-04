@@ -40,3 +40,45 @@ c:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV
 c:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.pdb
 c:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.genruntimeconfig.cache
 c:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV2\obj\Debug\net8.0\ref\CordonV2.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\appsettings.Development.json
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\appsettings.json
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.staticwebassets.runtime.json
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.exe
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.deps.json
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.runtimeconfig.json
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\CordonV2.pdb
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\Microsoft.JSInterop.dll
+q:\Capstone\CordonV2\CordonV2\bin\Debug\net8.0\MudBlazor.dll
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.csproj.AssemblyReference.cache
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.GeneratedMSBuildEditorConfig.editorconfig
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.AssemblyInfoInputs.cache
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.AssemblyInfo.cs
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.csproj.CoreCompileInputs.cache
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.MvcApplicationPartsAssemblyInfo.cache
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.sourcelink.json
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets.build.json
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets.development.json
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets\msbuild.CordonV2.Microsoft.AspNetCore.StaticWebAssets.props
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets\msbuild.build.CordonV2.props
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.CordonV2.props
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.CordonV2.props
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\staticwebassets.pack.json
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\scopedcss\bundle\CordonV2.styles.css
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.csproj.Up2Date
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.dll
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\refint\CordonV2.dll
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.pdb
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\CordonV2.genruntimeconfig.cache
+q:\Capstone\CordonV2\CordonV2\obj\Debug\net8.0\ref\CordonV2.dll

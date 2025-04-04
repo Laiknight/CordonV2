@@ -3,17 +3,47 @@
 
 <PageTitle>Home</PageTitle>
 
-<MudText Typo="Typo.h3" Style="text-align: center;" GutterBottom="true">FILE UPLOAD</MudText>
-
-<MudFileUpload T="IBrowserFile" OnFilesChanged="FileUploaded">
-    <ActivatorContent>
-        <MudButton Variant="Variant.Filled"
-                   Color="Color.Primary"
-                   StartIcon="@Icons.Material.Filled.CloudUpload">
-            Upload Files
-        </MudButton>
-    </ActivatorContent>
-</MudFileUpload>
+@if(!dataUploaded && !dataUploading && string.IsNullOrEmpty(ErrorMessage))
+{
+    <MudText Typo="Typo.h3" Style="text-align: center;" GutterBottom="true">FILE UPLOAD</MudText>
+    <MudGrid Justify="Justify.Center">
+        <MudItem>
+            <MudFileUpload T="IBrowserFile" Accept=".csv" OnFilesChanged="FileUploaded">
+                <ActivatorContent>
+                    <MudButton Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            StartIcon="@Icons.Material.Filled.CloudUpload">
+                        Upload Files
+                    </MudButton>
+                </ActivatorContent>
+            </MudFileUpload>
+        </MudItem>
+    </MudGrid>
+} else if (dataUploading)
+{
+    <MudGrid Justify="Justify.Center" Class="object-position: center;">
+        <MudItem>
+            <MudProgressCircular Color="Color.Primary" Style="height:70px;width:70px;" Indeterminate="true" Class="object-center"/>
+        </MudItem>
+    </MudGrid>
+} else if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <MudGrid Justify="Justify.Center">
+        <MudFileUpload T="IBrowserFile" Accept=".csv" OnFilesChanged="FileUploaded">
+            <ActivatorContent>
+                <MudButton Variant="Variant.Filled"
+                        Color="Color.Primary"
+                        StartIcon="@Icons.Material.Filled.CloudUpload">
+                    Upload Files
+                </MudButton>
+            </ActivatorContent>
+        </MudFileUpload>
+        <MudText Typo="Typo.h6" Style="text-align: center;" GutterBottom="true">@ErrorMessage</MudText>
+    </MudGrid>
+} else if (dataUploaded)
+{
+    <MudText>File Uploaded</MudText>
+}
 
 @code {
     public string FileName { get; set; } = "";
@@ -22,6 +52,7 @@
     public DateTimeOffset LastModified { get; set; }
     public string ErrorMessage { get; set; } = "";
     public bool dataUploaded { get; set; } = false;
+    public bool dataUploading { get; set; } = false;
 
     StreamReader? reader;
     List<ReaderEvent> readerEvents = new List<ReaderEvent>();
@@ -31,6 +62,7 @@
     public async Task FileUploaded(InputFileChangeEventArgs e)
     {
         var browserFile = e.File;
+        dataUploading = true;
 
         if (browserFile != null)
         {
@@ -57,10 +89,12 @@
                 reader.Close();
 
                 dataUploaded = true;
+                dataUploading = false;
             }
             catch (Exception exception)
             {
                 ErrorMessage = exception.Message;
+                dataUploading = false;
             }
         }
     }

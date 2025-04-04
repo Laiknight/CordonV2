@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj": {}
+    "q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj": {
+    "q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
+        "projectUniqueName": "q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj",
         "projectName": "CordonV2",
-        "projectPath": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
-        "packagesPath": "C:\\Users\\ls1036305\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\obj\\",
+        "projectPath": "q:\\Capstone\\CordonV2\\CordonV2\\CordonV2.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "q:\\Capstone\\CordonV2\\CordonV2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ls1036305\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.406/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
