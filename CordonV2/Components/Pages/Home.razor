@@ -54,7 +54,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -65,7 +65,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -76,7 +76,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -87,7 +87,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -98,7 +98,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions"AxisChartOptions="@axisOptions"  Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -118,10 +118,19 @@
     public string ErrorMessage { get; set; } = "";
     public bool dataUploaded { get; set; } = false;
     public bool dataUploading { get; set; } = false;
+    public int topNum = 10;
 
     ChartOptions chartOptions = new ChartOptions()
     {
         ShowLegend = false,
+        XAxisLines = true,
+        YAxisLines = true,
+        ShowToolTips = true,
+    };
+
+    AxisChartOptions axisOptions = new AxisChartOptions()
+    {
+        MatchBoundsToSize = true,
     };
 
     //Most Accessed Doors
@@ -249,15 +258,17 @@
         }
 
         var sortedNumAccessed = numAccessed.OrderByDescending(x => x.Value).ToList();
-
+        MADX = new List<string>();
+        double[] data = new double[topNum];
         for (int i = 0; i < sortedNumAccessed.Count; i++)
         {
-            if (i < 10)
+            if (i < topNum)
             {
-                MAD.Add(new ChartSeries() { Name = sortedNumAccessed[i].Key, Data = new double[] { sortedNumAccessed[i].Value } });
                 MADX.Add(sortedNumAccessed[i].Key);
+                data[i] = Convert.ToDouble(sortedNumAccessed[i].Value);
             }
         }
+        MAD.Add(new ChartSeries() { Name = "Most Accessed Doors", Data = data });
     }
 
     void MostActiveUsers()
@@ -277,20 +288,23 @@
         }
 
         var sortedNumAccessed = numAccessed.OrderByDescending(x => x.Value).ToList();
-
+        MAUX = new List<string>();
+        double[] data = new double[topNum];
         for (int i = 0; i < sortedNumAccessed.Count; i++)
         {
-            if (i < 10)
+            if (i < topNum)
             {
-                MAU.Add(new ChartSeries() { Name = sortedNumAccessed[i].Key, Data = new double[] { sortedNumAccessed[i].Value } });
                 MAUX.Add(sortedNumAccessed[i].Key);
+                data[i] = Convert.ToDouble(sortedNumAccessed[i].Value);
             }
         }
+        MAU.Add(new ChartSeries() { Name = "Most Active Users", Data = data });
     }
 
     void DailyActivity()
     {
         Dictionary<string, int> numAccessed = new Dictionary<string, int>();
+        Dictionary<string, List<DateTime>> timesAccessed = new Dictionary<string, List<DateTime>>();
 
         foreach (var readerEvent in readerEvents)
         {
@@ -298,24 +312,68 @@
             if (numAccessed.ContainsKey(date.DayOfWeek.ToString()))
             {
                 numAccessed[date.DayOfWeek.ToString()]++;
+                if(!timesAccessed[date.DayOfWeek.ToString()].Contains(date))
+                    timesAccessed[date.DayOfWeek.ToString()].Add(date);
             }
             else
             {
                 numAccessed.Add(date.DayOfWeek.ToString(), 1);
+                timesAccessed.Add(date.DayOfWeek.ToString(), new List<DateTime>() { date });
             }
         }
 
         DAX = new List<string>{  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        double[] data = new double[DAX.Count];
         for (int j = 0; j < DAX.Count; j++)
         {
-            double[] data = new double[DAX.Count];
-            data[j] =  Convert.ToDouble(numAccessed[DAX[j]]);
-            DA.Add(new ChartSeries() { Name = DAX[j], Data = data } );
+            data[j] =  Convert.ToDouble(numAccessed[DAX[j]])/Convert.ToDouble(timesAccessed[DAX[j]].Count);
         }
+        DA.Add(new ChartSeries() { Name = "Average", Data = data } );
     }
 
+    // top 10 unique entries per door per day
+    // First check how doors and unique users
+    // Then split into days
+    // Then average out
+    //REWORK ON WEDNESDAY!!
     void UniqueDailyEntries()
     {
+        Dictionary<string, List<ReaderEvent>> placesBeen = new Dictionary<string, List<ReaderEvent>>();
+        List<DateTime> uniqueDates = new List<DateTime>();
+        Dictionary<string, int> uniqueDaysCount = new Dictionary<string, int>();
+
+        foreach (var readerEvent in readerEvents)
+        {
+            if (placesBeen.ContainsKey(readerEvent.readerDesc))
+            {
+                if (!placesBeen[readerEvent.readerDesc].Contains(readerEvent))
+                {
+                    placesBeen[readerEvent.readerDesc].Add(readerEvent);
+                }
+            }
+            else
+            {
+                placesBeen.Add(readerEvent.readerDesc, new List<ReaderEvent>() { readerEvent });
+            }
+            if(!uniqueDates.Contains(DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T')))))
+            {
+                uniqueDates.Add(DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T'))));
+            }
+        }
+
+        foreach (var date in uniqueDates)
+        {
+            var day = date.DayOfWeek.ToString();
+            if (uniqueDaysCount.ContainsKey(day))
+            {
+                uniqueDaysCount[day]++;
+            }
+            else
+            {
+                uniqueDaysCount.Add(day, 1);
+            }
+        }
+
 
     }
 
@@ -335,8 +393,7 @@
         public string? location { get; set; }
         public string? readerDesc { get; set; }
         public string? idHash { get; set; }
-        public string? devID { get; set; }
-        public string? machine { get; set; }
+        public string? uniqueID { get; set; }
 
         public ReaderEvent(string? eventTime, string? location, string? readerDesc, string? idHash, string? devID, string? machine)
         {
@@ -344,8 +401,7 @@
             this.location = location;
             this.readerDesc = readerDesc;
             this.idHash = idHash;
-            this.devID = devID;
-            this.machine = machine;
+            uniqueID = devID + machine;
         }
     }
 }
