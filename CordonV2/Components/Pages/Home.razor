@@ -76,7 +76,7 @@
         </MudItem>
 
         <MudItem xs="4" >
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
+            <MudChart ChartType="ChartType.StackedBar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
@@ -125,7 +125,7 @@
         ShowLegend = false,
         XAxisLines = true,
         YAxisLines = true,
-        ShowToolTips = true,
+        ShowToolTips = false,
     };
 
     AxisChartOptions axisOptions = new AxisChartOptions()
@@ -247,13 +247,13 @@
 
         foreach (var readerEvent in readerEvents)
         {
-            if (numAccessed.ContainsKey(readerEvent.readerDesc))
+            if (numAccessed.ContainsKey(readerEvent.uniqueID))
             {
-                numAccessed[readerEvent.readerDesc]++;
+                numAccessed[readerEvent.uniqueID]++;
             }
             else
             {
-                numAccessed.Add(readerEvent.readerDesc, 1);
+                numAccessed.Add(readerEvent.uniqueID, 1);
             }
         }
 
@@ -331,50 +331,77 @@
         DA.Add(new ChartSeries() { Name = "Average", Data = data } );
     }
 
-    // top 10 unique entries per door per day
-    // First check how doors and unique users
-    // Then split into days
-    // Then average out
-    //REWORK ON WEDNESDAY!!
+    //Stacked bar graph of top 5 doors with the most unique entries per day
+    //Current issue: The data is not being added to the chart correctly
+    //Potential Reason: When I average out the number of accesses for the door per specified day it might be messing up. Please look into this.
     void UniqueDailyEntries()
     {
-        Dictionary<string, List<ReaderEvent>> placesBeen = new Dictionary<string, List<ReaderEvent>>();
-        List<DateTime> uniqueDates = new List<DateTime>();
-        Dictionary<string, int> uniqueDaysCount = new Dictionary<string, int>();
+        //string 1 = date, string 2 = door, string 3 = idHashs
+        Dictionary<string, Dictionary<string, List<string>>> numAccessed = new Dictionary<string, Dictionary<string, List<string>>>();
 
-        foreach (var readerEvent in readerEvents)
+        foreach(var readerEvent in readerEvents)
         {
-            if (placesBeen.ContainsKey(readerEvent.readerDesc))
+            var date = DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T')));
+            if (numAccessed.ContainsKey(date.ToString("yyyy-MM-dd")))
             {
-                if (!placesBeen[readerEvent.readerDesc].Contains(readerEvent))
+                if (numAccessed[date.ToString("yyyy-MM-dd")].ContainsKey(readerEvent.uniqueID))
                 {
-                    placesBeen[readerEvent.readerDesc].Add(readerEvent);
+                    if(!numAccessed[date.ToString("yyyy-MM-dd")][readerEvent.uniqueID].Contains(readerEvent.idHash))
+                        numAccessed[date.ToString("yyyy-MM-dd")][readerEvent.uniqueID].Add(readerEvent.idHash);
+                }
+                else
+                {
+                    numAccessed[date.ToString("yyyy-MM-dd")].Add(readerEvent.uniqueID, new List<string>() { readerEvent.idHash });
                 }
             }
             else
             {
-                placesBeen.Add(readerEvent.readerDesc, new List<ReaderEvent>() { readerEvent });
-            }
-            if(!uniqueDates.Contains(DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T')))))
-            {
-                uniqueDates.Add(DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T'))));
+                numAccessed.Add(date.ToString("yyyy-MM-dd"), new Dictionary<string, List<string>>());
+                numAccessed[date.ToString("yyyy-MM-dd")].Add(readerEvent.uniqueID, new List<string>() { readerEvent.idHash });
             }
         }
 
-        foreach (var date in uniqueDates)
+        //string 1 = day of week, string 2 = door, int = number of unique idHashs
+        Dictionary<string, Dictionary<string, double>> averagedNumAccess = new Dictionary<string, Dictionary<string, double>>();
+
+        //string 1 = day of week, string 2 = times that day has occured
+        Dictionary<string, int> numDays = new Dictionary<string, int>();
+
+        foreach(var entry in numAccessed)
         {
-            var day = date.DayOfWeek.ToString();
-            if (uniqueDaysCount.ContainsKey(day))
+            var date = DateTime.Parse(entry.Key);
+            if(numDays.ContainsKey(date.DayOfWeek.ToString()))
             {
-                uniqueDaysCount[day]++;
+                numDays[date.DayOfWeek.ToString()]++;
+            } else
+            {
+                numDays.Add(date.DayOfWeek.ToString(), 1);
             }
-            else
+
+            if(averagedNumAccess.ContainsKey(date.DayOfWeek.ToString()))
             {
-                uniqueDaysCount.Add(day, 1);
+                foreach(var door in entry.Value)
+                {
+                    if(averagedNumAccess[date.DayOfWeek.ToString()].ContainsKey(door.Key))
+                    {
+                        averagedNumAccess[date.DayOfWeek.ToString()][door.Key] += Convert.ToDouble(door.Value.Count);
+                    }
+                    else
+                    {
+                        averagedNumAccess[date.DayOfWeek.ToString()].Add(door.Key, Convert.ToDouble(door.Value.Count));
+                    }
+                }
+            } else
+            {
+                averagedNumAccess.Add(date.DayOfWeek.ToString(), new Dictionary<string, double>());
+                foreach (var door in entry.Value)
+                {
+                    averagedNumAccess[date.DayOfWeek.ToString()].Add(door.Key, Convert.ToDouble(door.Value.Count));
+                }
             }
         }
 
-
+        UDEX = new List<string> { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
     }
 
    void LongestInactivityTimes()
@@ -389,19 +416,19 @@
 
     public class ReaderEvent
     {
-        public string? eventTime { get; set; }
-        public string? location { get; set; }
-        public string? readerDesc { get; set; }
-        public string? idHash { get; set; }
-        public string? uniqueID { get; set; }
+        public string eventTime { get; set; }
+        public string location { get; set; }
+        public string readerDesc { get; set; }
+        public string idHash { get; set; }
+        public string uniqueID { get; set; }
 
-        public ReaderEvent(string? eventTime, string? location, string? readerDesc, string? idHash, string? devID, string? machine)
+        public ReaderEvent(string eventTime, string location, string readerDesc, string idHash, string devID, string machine)
         {
             this.eventTime = eventTime;
             this.location = location;
             this.readerDesc = readerDesc;
             this.idHash = idHash;
-            uniqueID = devID + machine;
+            uniqueID = string.Concat(devID,machine);
         }
     }
 }
