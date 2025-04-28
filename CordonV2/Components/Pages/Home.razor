@@ -41,69 +41,70 @@
     </MudGrid>
 } else if (dataUploaded)
 {
+
     <MudGrid>
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.Bar" ChartSeries="@MAD" XAxisLabels="@MADX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Most Accessed Doors</text>
+                    <text x="80" y="0" class="heavy">Most Accessed Doors</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Most Active Users</text>
+                    <text x="80" y="0" class="heavy">Most Active Users</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Daily Activity</text>
+                    <text x="80" y="0" class="heavy">Daily Activity</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.StackedBar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Unique Daily Entries</text>
+                    <text x="80" y="0" class="heavy">Unique Daily Entries</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Longest Inactivity Times</text>
+                    <text x="80" y="0" class="heavy">Longest Inactivity Times</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4" >
+        <MudItem xs="4">
             <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions"AxisChartOptions="@axisOptions"  Width="100%" Height="350px">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="35" class="heavy">Abnormal Entries</text>
+                    <text x="80" y="0" class="heavy">Abnormal Entries</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
@@ -331,86 +332,95 @@
         DA.Add(new ChartSeries() { Name = "Average", Data = data } );
     }
 
-    //Stacked bar graph of top 5 doors with the most unique entries per day
-    //Current issue: The data is not being added to the chart correctly
-    //Potential Reason: When I average out the number of accesses for the door per specified day it might be messing up. Please look into this.
+    //Unique Entries per day per door
+    //Stacked bar charts showing top 5 doors per day
+    //X is the date
+    //Y is the number of unique entries
     void UniqueDailyEntries()
     {
-        //string 1 = date, string 2 = door, string 3 = idHashs
-        Dictionary<string, Dictionary<string, List<string>>> numAccessed = new Dictionary<string, Dictionary<string, List<string>>>();
+        
+    }
 
+    //Read comments inside to see what else needs to be done
+   void LongestInactivityTimes()
+    {
+        //Door and Dates acessed
+        Dictionary<string, List<DateTime>> timesAccessed = new Dictionary<string, List<DateTime>>();
+        
+        //Door and largest inactivity time
+        Dictionary<string, TimeSpan> inactivityTimes = new Dictionary<string, TimeSpan>();
+
+        //Make the first dictionary
         foreach(var readerEvent in readerEvents)
         {
-            var date = DateTime.Parse(readerEvent.eventTime.Substring(0, readerEvent.eventTime.IndexOf('T')));
-            if (numAccessed.ContainsKey(date.ToString("yyyy-MM-dd")))
+            var date = DateTime.Parse(readerEvent.eventTime);
+            if (timesAccessed.ContainsKey(readerEvent.uniqueID))
             {
-                if (numAccessed[date.ToString("yyyy-MM-dd")].ContainsKey(readerEvent.uniqueID))
-                {
-                    if(!numAccessed[date.ToString("yyyy-MM-dd")][readerEvent.uniqueID].Contains(readerEvent.idHash))
-                        numAccessed[date.ToString("yyyy-MM-dd")][readerEvent.uniqueID].Add(readerEvent.idHash);
-                }
-                else
-                {
-                    numAccessed[date.ToString("yyyy-MM-dd")].Add(readerEvent.uniqueID, new List<string>() { readerEvent.idHash });
-                }
+                timesAccessed[readerEvent.uniqueID].Add(date);
             }
             else
             {
-                numAccessed.Add(date.ToString("yyyy-MM-dd"), new Dictionary<string, List<string>>());
-                numAccessed[date.ToString("yyyy-MM-dd")].Add(readerEvent.uniqueID, new List<string>() { readerEvent.idHash });
+                timesAccessed.Add(readerEvent.uniqueID, new List<DateTime>() { date });
             }
         }
 
-        //string 1 = day of week, string 2 = door, int = number of unique idHashs
-        Dictionary<string, Dictionary<string, double>> averagedNumAccess = new Dictionary<string, Dictionary<string, double>>();
-
-        //string 1 = day of week, string 2 = times that day has occured
-        Dictionary<string, int> numDays = new Dictionary<string, int>();
-
-        foreach(var entry in numAccessed)
+        //Make the second dictionary from the first one
+        foreach (var door in timesAccessed.Keys)
         {
-            var date = DateTime.Parse(entry.Key);
-            if(numDays.ContainsKey(date.DayOfWeek.ToString()))
+            var dates = timesAccessed[door];
+            dates.Sort();
+            TimeSpan maxInactivity = new TimeSpan(0);
+            for (int i = 1; i < dates.Count; i++)
             {
-                numDays[date.DayOfWeek.ToString()]++;
-            } else
-            {
-                numDays.Add(date.DayOfWeek.ToString(), 1);
-            }
-
-            if(averagedNumAccess.ContainsKey(date.DayOfWeek.ToString()))
-            {
-                foreach(var door in entry.Value)
+                var inactivity = dates[i] - dates[i - 1];
+                if (inactivity > maxInactivity)
                 {
-                    if(averagedNumAccess[date.DayOfWeek.ToString()].ContainsKey(door.Key))
-                    {
-                        averagedNumAccess[date.DayOfWeek.ToString()][door.Key] += Convert.ToDouble(door.Value.Count);
-                    }
-                    else
-                    {
-                        averagedNumAccess[date.DayOfWeek.ToString()].Add(door.Key, Convert.ToDouble(door.Value.Count));
-                    }
-                }
-            } else
-            {
-                averagedNumAccess.Add(date.DayOfWeek.ToString(), new Dictionary<string, double>());
-                foreach (var door in entry.Value)
-                {
-                    averagedNumAccess[date.DayOfWeek.ToString()].Add(door.Key, Convert.ToDouble(door.Value.Count));
+                    maxInactivity = inactivity;
                 }
             }
+            inactivityTimes.Add(door, maxInactivity);
         }
 
-        UDEX = new List<string> { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
-    }
+        //Sort the dictionary
+        var sortedInactivityTimes = inactivityTimes.OrderByDescending(x => x.Value).ToList();
+        LITX = new List<string>();
+        double[] data = new double[topNum];
 
-   void LongestInactivityTimes()
-    {
+        for (int i = 0; i < sortedInactivityTimes.Count; i++)
+        {
+            if (i < topNum)
+            {
+                LITX.Add(sortedInactivityTimes[i].Key);
 
+                //Add a way to change it from being in Days, Hours, or Minutes
+                data[i] = Convert.ToDouble(sortedInactivityTimes[i].Value.TotalDays);
+            }
+        }
+        LIT.Add(new ChartSeries() { Name = "Longest Inactivity Times", Data = data });
     }
 
     void AbnormalEntries()
     {
+        //Doors and Dates Accessed
+        Dictionary<string, List<DateTime>> timesAccessed = new Dictionary<string, List<DateTime>>();
+
+        //Doors and # of accesses outside normal times
+        Dictionary<string, List<DateTime>> abnormalEntries = new Dictionary<string, List<DateTime>>();
+
+        //Make the first dictionary
+        foreach(var readerEvent in readerEvents)
+        {
+            var date = DateTime.Parse(readerEvent.eventTime);
+            if (timesAccessed.ContainsKey(readerEvent.uniqueID))
+            {
+                timesAccessed[readerEvent.uniqueID].Add(date);
+            }
+            else
+            {
+                timesAccessed.Add(readerEvent.uniqueID, new List<DateTime>() { date });
+            }
+        }
+
 
     }
 
