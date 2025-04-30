@@ -43,68 +43,68 @@
 {
 
     <MudGrid>
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAD" XAxisLabels="@MADX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAD" XAxisLabels="@MADX.ToArray()" ChartOptions="@chartOptions" Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Most Accessed Doors</text>
+                    <text x="80" y="20" class="heavy">Most Accessed Doors</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@MAU" XAxisLabels="@MAUX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Most Active Users</text>
+                    <text x="80" y="20" class="heavy">Most Active Users</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@DA" XAxisLabels="@DAX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Daily Activity</text>
+                    <text x="80" y="20" class="heavy">Daily Activity</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.StackedBar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.StackedBar" ChartSeries="@UDE" XAxisLabels="@UDEX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Unique Daily Entries</text>
+                    <text x="80" y="20" class="heavy">Unique Daily Entries</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@LIT" XAxisLabels="@LITX.ToArray()" ChartOptions="@chartOptions" AxisChartOptions="@axisOptions" Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Longest Inactivity Times</text>
+                    <text x="80" y="20" class="heavy">Longest Inactivity Times</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
 
-        <MudItem xs="4">
-            <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions"AxisChartOptions="@axisOptions"  Width="100%" Height="350px">
+        <MudItem xs="4" Class="pt-4">
+            <MudChart ChartType="ChartType.Bar" ChartSeries="@AE" XAxisLabels="@AEX.ToArray()" ChartOptions="@chartOptions"AxisChartOptions="@axisOptions"  Width="100%" Height="350px" Class="pt-16">
                 <CustomGraphics>
                     <style>
                         .heavy { font: bold 30px Helvetica; }
                     </style>
-                    <text x="80" y="0" class="heavy">Abnormal Entries</text>
+                    <text x="80" y="20" class="heavy">Abnormal Entries (@startTime.ToString("hh:mm")am - @endTime.ToString("hh:mm")pm)</text>
                 </CustomGraphics>
             </MudChart>
         </MudItem>
@@ -157,6 +157,8 @@
     //Abnormal Entries
     public List<ChartSeries> AE { get; set; } = new List<ChartSeries>();
     public List<string> AEX { get; set; } = new List<string>();
+    public DateTime startTime { get; set; } = new DateTime(1999, 1, 1, 8,0,0);
+    public DateTime endTime { get; set; } = new DateTime(1999, 1, 1, 17,0,0);
 
     StreamReader? reader;
     List<ReaderEvent> readerEvents = new List<ReaderEvent>();
@@ -333,8 +335,8 @@
     }
 
     //Unique Entries per day per door
-    //Stacked bar charts showing top 5 doors per day
-    //X is the date
+    //Stacked bar charts showing top 5 doors on any 
+    //X is the top 5 dates with the largest number of unique entries
     //Y is the number of unique entries
     void UniqueDailyEntries()
     {
@@ -421,7 +423,43 @@
             }
         }
 
+        //Make the second dictionary from the first one
+        foreach (var door in timesAccessed.Keys)
+        {
+            var dates = timesAccessed[door];
+            dates.Sort();
+            List<DateTime> abnormalDates = new List<DateTime>();
+            for (int i = 1; i < dates.Count; i++)
+            {
+                var date = dates[i];
 
+                if (date.TimeOfDay < startTime.TimeOfDay || date.TimeOfDay > startTime.TimeOfDay)
+                {
+                    if(abnormalEntries.ContainsKey(door))
+                    {
+                        abnormalEntries[door].Add(date);
+                    } else
+                    {
+                        abnormalEntries.Add(door, new List<DateTime>() { date });
+                    }
+                }
+            }
+        }
+
+        //Sort the dictionary
+        var sortedAbnormalEntries = abnormalEntries.OrderByDescending(x => x.Value.Count).ToList();
+        AEX = new List<string>();
+        double[] data = new double[topNum];
+
+        for (int i = 0; i < sortedAbnormalEntries.Count; i++)
+        {
+            if (i < topNum)
+            {
+                AEX.Add(sortedAbnormalEntries[i].Key);
+                data[i] = Convert.ToDouble(sortedAbnormalEntries[i].Value.Count);
+            }
+        }
+        AE.Add(new ChartSeries() { Name = "Abnormal Entries", Data = data });
     }
 
     public class ReaderEvent
