@@ -12,51 +12,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CordonV2
 build_property.RootNamespace = CordonV2
-build_property.ProjectDir = D:\Unity\Catventure\CordonV2\CordonV2\
+build_property.ProjectDir = C:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV2\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Unity\Catventure\CordonV2\CordonV2
+build_property.MSBuildProjectDirectory = C:\Users\ls1036305\Desktop\CLAPSTON WORK!!!!! -\CordonMudblazor\CordonV2\CordonV2
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/App.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Layout/MainLayout.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Components/ChartInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXENoYXJ0SW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Components/EventInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnRzXEV2ZW50SW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Layout/NavMenu.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Pages/Counter.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Pages/Error.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Pages/Home.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Pages/MAD.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Pages/MAD.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNQUQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Pages/Weather.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/Routes.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Unity/Catventure/CordonV2/CordonV2/Components/_Imports.razor]
+[C:/Users/ls1036305/Desktop/CLAPSTON WORK\!\!\!\!\! -/CordonMudblazor/CordonV2/CordonV2/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

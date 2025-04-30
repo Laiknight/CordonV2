@@ -1,0 +1,43 @@
+﻿<h3>Component1</h3>
+
+@code {
+//Most Accessed Doors
+    [Parameter]
+    public List<ChartSeries> MAD { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> MADX { get; set; } = new List<string>();
+
+    //Most Active Users
+    [Parameter]
+    public List<ChartSeries> MAU { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> MAUX { get; set; } = new List<string>();
+
+    //Daily Activity
+    [Parameter]
+    public List<ChartSeries> DA { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> DAX { get; set; } = new List<string>();
+    
+    //Unique Daily Entries
+    [Parameter]
+    public List<ChartSeries> UDE { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> UDEX { get; set; } = new List<string>();
+
+    //Longest Inactivity Times
+    [Parameter]
+    public List<ChartSeries> LIT { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> LITX { get; set; } = new List<string>();
+        
+    //Abnormal Entries
+    [Parameter]
+    public List<ChartSeries> AE { get; set; } = new List<ChartSeries>();
+    [Parameter]
+    public List<string> AEX { get; set; } = new List<string>();
+    [Parameter]
+    public DateTime startTime { get; set; } = new DateTime(1999, 1, 1, 8,0,0);
+    [Parameter]
+    public DateTime endTime { get; set; } = new DateTime(1999, 1, 1, 17,0,0);
+}

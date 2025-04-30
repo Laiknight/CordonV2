@@ -701,19 +701,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\phonv\\.nuget\\packages\\": {}
+    "C:\\Users\\ls1036305\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Unity\\Catventure\\CordonV2\\CordonV2\\CordonV2.csproj",
+      "projectUniqueName": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
       "projectName": "CordonV2",
-      "projectPath": "D:\\Unity\\Catventure\\CordonV2\\CordonV2\\CordonV2.csproj",
-      "packagesPath": "C:\\Users\\phonv\\.nuget\\packages\\",
-      "outputPath": "D:\\Unity\\Catventure\\CordonV2\\CordonV2\\obj\\",
+      "projectPath": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\CordonV2.csproj",
+      "packagesPath": "C:\\Users\\ls1036305\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ls1036305\\Desktop\\CLAPSTON WORK!!!!! -\\CordonMudblazor\\CordonV2\\CordonV2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\phonv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ls1036305\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -768,7 +773,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
